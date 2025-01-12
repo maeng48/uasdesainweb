@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Web</title>
+    <style>
+         * {box-sizing: border-box}
+        body {font-family: Verdana, sans-serif; margin:0}
+        .mySlides {display: none}
+        img {vertical-align: middle;}
+        .slideshow-container {
+            max-width: 1100px;
+            position: relative;
+            margin: auto;
+        }
+        .text {
+            color: #f2f2f2;
+            font-size: 40px;
+            padding: 8px 15px;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 40px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+        
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display:none;
+            transition: background-color 0.6s ease;
+        }
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+
+        @media only screen and (max-width: 300px) {
+            .prev, .next, .text {font-size: 11px}
+        }
+        
+
+        /* General Styling */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 5px;
+            max-width: 900px; /* Menambahkan lebar maksimum */
+            margin: auto; /* Memastikan kontainer tetap di tengah */
+        }        
+
+        /* Sidebar */
+        .sidebar {
+            flex: 1;
+            background-color: #4CAF50;
+            padding: 10px; /* Mengurangi padding */
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-right: 10px; /* Mengurangi margin */
+        }        
+        .sidebar header {
+            margin-bottom: 20px;
+        }
+
+        .home-btn {
+            padding: 35px 40px;
+            margin: 5px 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #4CAF50;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .home-btn:hover {
+            transform: scale(1.1);
+            background-color: #1976D2;
+        }
+
+        .home-btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .home-btn-family, .home-btn-about, .home-btn-education, .home-btn-home {
+            background-color: #4CAF50;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 2;
+            background-color: #ffffff;
+            padding: 10px; /* Mengurangi padding */
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px; /* Membatasi lebar konten utama */
+        }
+        
+
+        .main-content p {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        /* Gambar Family dan About */
+        .family-images, .about-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .family-images img, .about-images img {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .family-images img:hover, .about-images img:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Styling untuk Pesan */
+        #message {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .main-content {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="instiki3.jpeg" style="width:100%">
+            <div class="text"></div>
+        </div>
+        <div class="mySlides fade">
+            <img src="foto1.jpeg" style="width:100%">
+            <div class="text"></div>
+        </div>
+        <div class="mySlides fade">
+            <img src="keluargaku.jpeg" style="width:100%">
+            <div class="text"></div>
+        </div>
+    </div>
+
+    <br>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar dengan tombol navigasi -->
+        <div class="sidebar">
+            <header>
+                <button class="home-btn home-btn-home" onclick="goHome()">Home</button>
+            </header>
+            <header>
+                <button class="home-btn home-btn-education" onclick="goEducation()">Education</button>
+            </header>
+            <header>
+                <button class="home-btn home-btn-family" onclick="goFamily()">Family</button>
+            </header>
+            <header>
+                <button class="home-btn home-btn-about" onclick="goAbout()">About</button>
+            </header>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <p id="message">Welcome to my web!</p>
+            <div class="main-content" id="main-contents" style="display: none;">
+                <img src="welcome.jpeg" alt="Welcome">
+            </div>
+
+            <div class="family-images" id="family-images" style="display: none;">
+                <img src="gweh.jpeg" alt="Family 1">
+                <img src="adik.jpeg" alt="Family 2">
+                <img src="bapak.jpeg" alt="Family 3">
+                <img src="mamak.jpeg" alt="Family 4">
+            </div>
+
+            <div class="about-images" id="about-images" style="display: none;">
+                <img src="agus1 (1).jpeg" alt="About">
+            </div>
+        </div>
+    </div>
+</tr>
+    </table>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+        }
+
+        function autoSlide() {
+            slideIndex++;
+            if (slideIndex > document.getElementsByClassName("mySlides").length) {
+                slideIndex = 1;
+            }
+            showSlides(slideIndex);
+        }
+
+        setInterval(autoSlide, 3000);
+
+        function goHome() {
+            document.getElementById("message").innerText = "Welcome to Home page!";
+            document.getElementById("family-images").style.display = "none";
+            document.getElementById("about-images").style.display = "none";
+        }
+
+        function goEducation() {
+            document.getElementById("message").innerHTML = " <sapn style=font-size: 20px; <p>Pendidikan saya dimulai di TK Singasari 1</p><sapn style=font-size: 30px;<p>Setelah itu, saya melanjutkan ke SD N 2 Blahkiuh.</p><sapn style=font-size: 20px;<p>Setelah itu, saya melanjutkan ke SMP N 1 Abiansemal</p><sapn style=font-size: 20px;<p>Setelah itu, saya melanjutkan ke SMA N 1 Abiansemal</p>"; 
+            document.getElementById("family-images").style.display = "none"; 
+            document.getElementById("about-images").style.display = "none";
+        }          
+
+        function goFamily() {
+            document.getElementById("message").innerText = "Ini adalah keluarga saya";
+            document.getElementById("family-images").style.display = "block";  
+            document.getElementById("about-images").style.display = "none";
+        }
+
+        function goAbout() {
+            document.getElementById("message").innerHTML = "<sapn style=font-size: 20px;<p>I Putu Agustia Susila Darma</p><sapn style=font-size: 20px;<p>Nim: 2401010451</p><sapn style=font-size: 20px;<p>Jurusan: MTI</p>";
+            document.getElementById("family-images").style.display = "none";  
+            document.getElementById("about-images").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
